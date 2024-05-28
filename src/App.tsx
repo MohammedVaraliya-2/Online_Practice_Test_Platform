@@ -1,15 +1,18 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { Routes, Route } from "react-router-dom";
 import "./globals.css";
-import Login from "./components/Login";
+import Login from "./components/_auth/Login";
 import Dashboard from "./components/Dashboard";
 
 function App() {
-  const { isAuthenticated } = useAuth0();
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-1">
-      {isAuthenticated ? <Dashboard /> : <Login />}
-    </div>
+    <>
+      <main className="min-h-screen flex items-center justify-center bg-dark-1">
+        <Routes>
+          <Route index path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Routes>
+      </main>
+    </>
   );
 }
 

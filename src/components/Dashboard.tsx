@@ -1,11 +1,19 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Quiz from "./Quiz";
-import Logout from "./Logout";
+import Logout from "./_auth/Logout";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
-  const { user } = useAuth0();
+  const { user, isAuthenticated } = useAuth0();
   const [startQuiz, setStartQuiz] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   if (startQuiz) {
     return <Quiz />;

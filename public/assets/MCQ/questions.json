@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "question": "What is 2 + 2?",
+    "options": ["3", "4", "5", "6"],
+    "correct_answer": "4",
+    "difficulty": "easy",
+    "tags": ["arithmetic"]
+  },
+  {
+    "id": 2,
+    "question": "What is the square root of 16?",
+    "options": ["2", "3", "4", "5"],
+    "correct_answer": "4",
+    "difficulty": "easy",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 3,
+    "question": "What is 5 + 7?",
+    "options": ["10", "11", "12", "13"],
+    "correct_answer": "12",
+    "difficulty": "easy",
+    "tags": ["arithmetic"]
+  },
+  {
+    "id": 4,
+    "question": "What is the capital of France?",
+    "options": ["Berlin", "Madrid", "Paris", "Rome"],
+    "correct_answer": "Paris",
+    "difficulty": "medium",
+    "tags": ["geography"]
+  },
+  {
+    "id": 5,
+    "question": "What is the chemical symbol for water?",
+    "options": ["O2", "H2O", "CO2", "HO"],
+    "correct_answer": "H2O",
+    "difficulty": "easy",
+    "tags": ["chemistry"]
+  },
+  {
+    "id": 6,
+    "question": "What is 10 * 10?",
+    "options": ["50", "100", "150", "200"],
+    "correct_answer": "100",
+    "difficulty": "easy",
+    "tags": ["arithmetic"]
+  },
+  {
+    "id": 7,
+    "question": "What is the largest planet in our solar system?",
+    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "correct_answer": "Jupiter",
+    "difficulty": "medium",
+    "tags": ["astronomy"]
+  },
+  {
+    "id": 8,
+    "question": "What is the sum of the angles in a triangle?",
+    "options": ["90 degrees", "180 degrees", "270 degrees", "360 degrees"],
+    "correct_answer": "180 degrees",
+    "difficulty": "easy",
+    "tags": ["geometry"]
+  },
+  {
+    "id": 9,
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["Mark Twain", "J.K. Rowling", "William Shakespeare", "Ernest Hemingway"],
+    "correct_answer": "William Shakespeare",
+    "difficulty": "medium",
+    "tags": ["literature"]
+  },
+  {
+    "id": 10,
+    "question": "What is the powerhouse of the cell?",
+    "options": ["Nucleus", "Ribosome", "Mitochondria", "Chloroplast"],
+    "correct_answer": "Mitochondria",
+    "difficulty": "medium",
+    "tags": ["biology"]
+  }
+]

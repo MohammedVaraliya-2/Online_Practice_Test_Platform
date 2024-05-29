@@ -16,29 +16,63 @@ const Quiz: React.FC = () => {
   const [completed, setCompleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [difficulty, setDifficulty] = useState<string>("easy");
-  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [easyQuestions, setEasyQuestions] = useState<Question[]>([]);
+  const [mediumQuestions, setMediumQuestions] = useState<Question[]>([]);
+  const [hardQuestions, setHardQuestions] = useState<Question[]>([]);
   const [shownQuestions, setShownQuestions] = useState<Set<number>>(new Set());
-  const [questionCount, setQuestionCount] = useState<number>(0);
 
-  const loadQuestions = (difficulty: string) => {
+  // Function to preload all questions from each difficulty level
+  const preloadQuestions = async () => {
     setLoading(true);
-    fetch(`/assets/MCQ/${difficulty}.json`)
-      .then((response) => response.json())
-      .then((data: Question[]) => {
-        setAllQuestions(data);
-        setLoading(false);
-      })
-      .catch(() => setLoading(false));
+    try {
+      const [easyResponse, mediumResponse, hardResponse] = await Promise.all([
+        fetch(`/assets/MCQ/easy.json`).then((res) => res.json()),
+        fetch(`/assets/MCQ/medium.json`).then((res) => res.json()),
+        fetch(`/assets/MCQ/hard.json`).then((res) => res.json()),
+      ]);
+      setEasyQuestions(easyResponse);
+      setMediumQuestions(mediumResponse);
+      setHardQuestions(hardResponse);
+    } catch (error) {
+      console.error("Failed to load questions", error);
+    }
+    setLoading(false);
   };
 
   useEffect(() => {
-    loadQuestions("easy");
+    preloadQuestions();
   }, []);
 
-  const getNextQuestion = (): Question | null => {
-    const availableQuestions = allQuestions.filter(
-      (_, index) => !shownQuestions.has(index)
-    );
+  useEffect(() => {
+    if (easyQuestions.length > 0) {
+      const nextQuestion = getNextQuestion("easy");
+      if (nextQuestion) {
+        setQuestions([nextQuestion]);
+      }
+    }
+  }, [easyQuestions]);
+
+  const getNextQuestion = (difficulty: string): Question | null => {
+    let availableQuestions: Question[];
+
+    switch (difficulty) {
+      case "easy":
+      default:
+        availableQuestions = easyQuestions.filter(
+          (_, index) => !shownQuestions.has(index)
+        );
+        break;
+      case "medium":
+        availableQuestions = mediumQuestions.filter(
+          (_, index) => !shownQuestions.has(index)
+        );
+        break;
+      case "hard":
+        availableQuestions = hardQuestions.filter(
+          (_, index) => !shownQuestions.has(index)
+        );
+        break;
+    }
 
     if (availableQuestions.length === 0) {
       return null;
@@ -51,65 +85,84 @@ const Quiz: React.FC = () => {
     setShownQuestions(
       new Set([
         ...Array.from(shownQuestions),
-        allQuestions.indexOf(nextQuestion),
+        (difficulty === "easy"
+          ? easyQuestions
+          : difficulty === "medium"
+          ? mediumQuestions
+          : hardQuestions
+        ).indexOf(nextQuestion),
       ])
     );
 
     return nextQuestion;
   };
 
-  useEffect(() => {
-    if (allQuestions.length > 0) {
-      const nextQuestion = getNextQuestion();
-      if (nextQuestion) {
-        setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
+  const getNextDifficulty = (
+    isCorrect: boolean,
+    currentDifficulty: string
+  ): string => {
+    if (isCorrect) {
+      switch (currentDifficulty) {
+        case "easy":
+          return "medium";
+        case "medium":
+          return "hard";
+        case "hard":
+          return "hard"; // No change if already at hard
+        default:
+          return "easy";
+      }
+    } else {
+      switch (currentDifficulty) {
+        case "medium":
+          return "easy";
+        case "hard":
+          return "medium";
+        case "easy":
+          return "easy"; // No change if already at easy
+        default:
+          return "easy";
       }
     }
-  }, [allQuestions]);
+  };
 
   const handleAnswer = (): void => {
     if (selectedOption === null) return;
+    console.log(easyQuestions);
+    console.log(mediumQuestions);
+    console.log(hardQuestions);
+    console.log(questions);
+
+    console.log("Question index Count", currentQuestionIndex);
 
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = selectedOption === currentQuestion.correct_answer;
 
     if (isCorrect) {
-      setScore(score + 1);
-      if (difficulty === "easy") {
-        setDifficulty("medium");
-        loadQuestions("medium");
-      } else if (difficulty === "medium") {
-        setDifficulty("hard");
-        loadQuestions("hard");
-      }
-    } else {
-      if (difficulty === "medium") {
-        setDifficulty("easy");
-        loadQuestions("easy");
-      } else if (difficulty === "hard") {
-        setDifficulty("medium");
-        loadQuestions("medium");
+      setScore((prevScore) => prevScore + 1);
+    }
+
+    const newDifficulty = getNextDifficulty(isCorrect, difficulty);
+    setDifficulty(newDifficulty);
+
+    setSelectedOption(null);
+    console.log("Questions length:", questions.length);
+    console.log("Current Question Index:", currentQuestionIndex);
+
+    if (questions.length < 21) {
+      setCompleted(false);
+      const nextQuestion = getNextQuestion(newDifficulty);
+      if (nextQuestion) {
+        setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
+        setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+        console.log("Next Question:", nextQuestion);
       }
     }
 
-    setSelectedOption(null);
-
-    if (questionCount < 19) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-      setQuestionCount(questionCount + 1);
-    } else {
+    if (questions.length === 20) {
       setCompleted(true);
     }
   };
-
-  useEffect(() => {
-    if (completed) return;
-
-    const nextQuestion = getNextQuestion();
-    if (nextQuestion) {
-      setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
-    }
-  }, [difficulty, questionCount, completed]);
 
   if (loading) {
     return (
@@ -137,8 +190,21 @@ const Quiz: React.FC = () => {
       <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-4">
           {currentQuestion &&
-            `${currentQuestionIndex + 1}. ${currentQuestion.question}`}
+            `${currentQuestionIndex + 1}. ${currentQuestion.question} `}
         </h2>
+        <p
+          className={
+            currentQuestion?.difficulty === "easy"
+              ? "text-green-500"
+              : currentQuestion?.difficulty === "medium"
+              ? "text-yellow-500"
+              : currentQuestion?.difficulty === "hard"
+              ? "text-red"
+              : ""
+          }
+        >
+          {currentQuestion && `${currentQuestion.difficulty}`}
+        </p>
         <ul className="w-full mb-4">
           {currentQuestion &&
             currentQuestion.options.map((option, index) => (

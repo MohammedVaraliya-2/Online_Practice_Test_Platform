@@ -168,5 +168,13 @@
     "correct_answer": "-2",
     "difficulty": "medium",
     "tags": ["algebra"]
+  },
+  {
+    "id": 21,
+    "question": "What is the value of tan(45 degrees)?",
+    "options": ["1", "√2", "√3", "2"],
+    "correct_answer": "1",
+    "difficulty": "medium",
+    "tags": ["trigonometry"]
   }
 ]

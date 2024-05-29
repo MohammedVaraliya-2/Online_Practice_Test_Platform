@@ -158,5 +158,13 @@
     "correct_answer": "1",
     "difficulty": "hard",
     "tags": ["calculus"]
+  },
+  {
+    "id": 21,
+    "question": "Find the slope of the tangent line to the curve y = x^3 - 2x^2 + x at the point (1, 0).",
+    "options": ["0", "1", "2", "3"],
+    "correct_answer": "1",
+    "difficulty": "hard",
+    "tags": ["calculus"]
   }
 ]

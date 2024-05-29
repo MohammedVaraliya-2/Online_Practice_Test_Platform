@@ -158,6 +158,14 @@
       "correct_answer": "2",
       "difficulty": "easy",
       "tags": ["number theory"]
+    },
+    {
+      "id": 21,
+      "question": "What is the result of 12 divided by 3?",
+      "options": ["3", "4", "6", "8"],
+      "correct_answer": "4",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
     }
 ]
   

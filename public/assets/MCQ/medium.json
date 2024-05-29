@@ -1,0 +1,172 @@
+[
+  {
+    "id": 1,
+    "question": "What is the value of x in the equation 2x + 3 = 11?",
+    "options": ["2", "3", "4", "5"],
+    "correct_answer": "4",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 2,
+    "question": "If the area of a circle is 16π square units, what is the radius of the circle?",
+    "options": ["2 units", "3 units", "4 units", "5 units"],
+    "correct_answer": "4 units",
+    "difficulty": "medium",
+    "tags": ["geometry"]
+  },
+  {
+    "id": 3,
+    "question": "What is the hypotenuse of a right triangle with legs of 3 units and 4 units?",
+    "options": ["5 units", "6 units", "7 units", "8 units"],
+    "correct_answer": "5 units",
+    "difficulty": "medium",
+    "tags": ["geometry"]
+  },
+  {
+    "id": 4,
+    "question": "What is the sum of the interior angles of a hexagon?",
+    "options": ["360 degrees", "540 degrees", "720 degrees", "900 degrees"],
+    "correct_answer": "720 degrees",
+    "difficulty": "medium",
+    "tags": ["geometry"]
+  },
+  {
+    "id": 5,
+    "question": "Solve for x: 3(x - 2) = 9",
+    "options": ["2", "3", "4", "5"],
+    "correct_answer": "5",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 6,
+    "question": "What is the quadratic formula?",
+    "options": [
+      "x = (-b ± √(b²-4ac)) / 2a",
+      "x = (-b ± √(b²+4ac)) / 2a",
+      "x = (-b ± 4ac) / 2a",
+      "x = (b ± √(b²-4ac)) / 2a"
+    ],
+    "correct_answer": "x = (-b ± √(b²-4ac)) / 2a",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 7,
+    "question": "If f(x) = 2x + 1, what is f(3)?",
+    "options": ["5", "6", "7", "8"],
+    "correct_answer": "7",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 8,
+    "question": "What is the derivative of x^2?",
+    "options": ["1", "x", "2x", "x^2"],
+    "correct_answer": "2x",
+    "difficulty": "medium",
+    "tags": ["calculus"]
+  },
+  {
+    "id": 9,
+    "question": "What is the slope of the line y = 2x + 3?",
+    "options": ["2", "3", "1/2", "3/2"],
+    "correct_answer": "2",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 10,
+    "question": "What is the factorial of 5?",
+    "options": ["120", "60", "20", "5"],
+    "correct_answer": "120",
+    "difficulty": "medium",
+    "tags": ["number theory"]
+  },
+  {
+    "id": 11,
+    "question": "What is the greatest common divisor (GCD) of 24 and 36?",
+    "options": ["4", "6", "8", "12"],
+    "correct_answer": "12",
+    "difficulty": "medium",
+    "tags": ["number theory"]
+  },
+  {
+    "id": 12,
+    "question": "What is the value of sin(30 degrees)?",
+    "options": ["0.5", "√2/2", "√3/2", "1"],
+    "correct_answer": "0.5",
+    "difficulty": "medium",
+    "tags": ["trigonometry"]
+  },
+  {
+    "id": 13,
+    "question": "What is the simplified form of (x^2 - 9)/(x + 3)?",
+    "options": ["x + 3", "x - 3", "x", "x + 1"],
+    "correct_answer": "x - 3",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 14,
+    "question": "What is the volume of a cube with side length 3 units?",
+    "options": [
+      "9 cubic units",
+      "18 cubic units",
+      "27 cubic units",
+      "36 cubic units"
+    ],
+    "correct_answer": "27 cubic units",
+    "difficulty": "medium",
+    "tags": ["geometry"]
+  },
+  {
+    "id": 15,
+    "question": "What is the equation of the line that passes through (0, 0) and (2, 4)?",
+    "options": ["y = 2x", "y = x + 2", "y = x/2", "y = 4x"],
+    "correct_answer": "y = 2x",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 16,
+    "question": "What is the least common multiple (LCM) of 6 and 8?",
+    "options": ["12", "18", "24", "30"],
+    "correct_answer": "24",
+    "difficulty": "medium",
+    "tags": ["number theory"]
+  },
+  {
+    "id": 17,
+    "question": "What is the simplified form of 16^(1/2)?",
+    "options": ["2", "4", "8", "16"],
+    "correct_answer": "4",
+    "difficulty": "medium",
+    "tags": ["arithmetic"]
+  },
+  {
+    "id": 18,
+    "question": "What is the value of cos(0 degrees)?",
+    "options": ["0", "0.5", "1", "√2/2"],
+    "correct_answer": "1",
+    "difficulty": "medium",
+    "tags": ["trigonometry"]
+  },
+  {
+    "id": 19,
+    "question": "What is the product of the roots of the equation x^2 - 5x + 6 = 0?",
+    "options": ["1", "5", "6", "8"],
+    "correct_answer": "6",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  },
+  {
+    "id": 20,
+    "question": "What is the value of the determinant of the matrix [[1, 2], [3, 4]]?",
+    "options": ["-2", "0", "1", "2"],
+    "correct_answer": "-2",
+    "difficulty": "medium",
+    "tags": ["algebra"]
+  }
+]

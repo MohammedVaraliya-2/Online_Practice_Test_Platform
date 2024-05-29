@@ -1,0 +1,163 @@
+[
+    {
+      "id": 1,
+      "question": "-67 x (-1) = ?",
+      "options": ["-1", "-67", "67", "1"],
+      "correct_answer": "67",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 2,
+      "question": "What is the value of 7 + 8?",
+      "options": ["14", "15", "16", "17"],
+      "correct_answer": "15",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 3,
+      "question": "What is the perimeter of a square with side length 5 units?",
+      "options": ["20 units", "15 units", "25 units", "10 units"],
+      "correct_answer": "20 units",
+      "difficulty": "easy",
+      "tags": ["geometry"]
+    },
+    {
+      "id": 4,
+      "question": "What is the value of 3^2?",
+      "options": ["6", "9", "12", "8"],
+      "correct_answer": "9",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 5,
+      "question": "Solve: 2x = 8. What is x?",
+      "options": ["2", "3", "4", "5"],
+      "correct_answer": "4",
+      "difficulty": "easy",
+      "tags": ["algebra"]
+    },
+    {
+      "id": 6,
+      "question": "What is the next prime number after 7?",
+      "options": ["9", "10", "11", "12"],
+      "correct_answer": "11",
+      "difficulty": "easy",
+      "tags": ["number theory"]
+    },
+    {
+      "id": 7,
+      "question": "What is the value of 45 / 5?",
+      "options": ["5", "7", "9", "11"],
+      "correct_answer": "9",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 8,
+      "question": "What is the value of 0 x 25?",
+      "options": ["0", "25", "1", "None of the above"],
+      "correct_answer": "0",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 9,
+      "question": "Which of these numbers is odd?",
+      "options": ["2", "4", "7", "8"],
+      "correct_answer": "7",
+      "difficulty": "easy",
+      "tags": ["number theory"]
+    },
+    {
+      "id": 10,
+      "question": "What is the sum of the angles in a triangle?",
+      "options": ["90 degrees", "120 degrees", "180 degrees", "360 degrees"],
+      "correct_answer": "180 degrees",
+      "difficulty": "easy",
+      "tags": ["geometry"]
+    },
+    {
+      "id": 11,
+      "question": "What is the smallest two-digit number?",
+      "options": ["9", "10", "11", "12"],
+      "correct_answer": "10",
+      "difficulty": "easy",
+      "tags": ["number theory"]
+    },
+    {
+      "id": 12,
+      "question": "Which is greater: 3/4 or 2/3?",
+      "options": ["3/4", "2/3", "They are equal", "Cannot be determined"],
+      "correct_answer": "3/4",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 13,
+      "question": "What is the result of 10 - 3?",
+      "options": ["5", "6", "7", "8"],
+      "correct_answer": "7",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 14,
+      "question": "What is the area of a rectangle with length 4 units and width 3 units?",
+      "options": ["7 square units", "12 square units", "14 square units", "10 square units"],
+      "correct_answer": "12 square units",
+      "difficulty": "easy",
+      "tags": ["geometry"]
+    },
+    {
+      "id": 15,
+      "question": "What is 100 divided by 10?",
+      "options": ["5", "10", "15", "20"],
+      "correct_answer": "10",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 16,
+      "question": "What is the value of 2^3?",
+      "options": ["4", "6", "8", "10"],
+      "correct_answer": "8",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 17,
+      "question": "Which of these is a factor of 36?",
+      "options": ["5", "6", "7", "8"],
+      "correct_answer": "6",
+      "difficulty": "easy",
+      "tags": ["number theory"]
+    },
+    {
+      "id": 18,
+      "question": "What is the sum of 6 and 9?",
+      "options": ["13", "14", "15", "16"],
+      "correct_answer": "15",
+      "difficulty": "easy",
+      "tags": ["arithmetic"]
+    },
+    {
+      "id": 19,
+      "question": "What is the value of pi (π) rounded to two decimal places?",
+      "options": ["3.12", "3.14", "3.16", "3.18"],
+      "correct_answer": "3.14",
+      "difficulty": "easy",
+      "tags": ["geometry"]
+    },
+    {
+      "id": 20,
+      "question": "What is the smallest prime number?",
+      "options": ["1", "2", "3", "5"],
+      "correct_answer": "2",
+      "difficulty": "easy",
+      "tags": ["number theory"]
+    }
+]
+  

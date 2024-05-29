@@ -12,6 +12,22 @@
   body {
     @apply bg-dark-1 text-white min-h-screen font-inter;
   }
+  
+  .bg-dark-1 {
+    @apply bg-gray-800;
+  }
+  
+  .bg-dark-2 {
+    @apply bg-gray-700;
+  }
+  
+  .bg-primary-500 {
+    @apply bg-blue-500;
+  }
+  
+  .bg-primary-600 {
+    @apply bg-blue-600;
+  }
 }
 
 @layer utilities {

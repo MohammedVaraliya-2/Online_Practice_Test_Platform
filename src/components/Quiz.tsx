@@ -11,55 +11,105 @@ interface Question {
 const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
+  const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState<number>(0);
   const [completed, setCompleted] = useState<boolean>(false);
-  const [difficulty, setDifficulty] = useState<string>("easy");
   const [loading, setLoading] = useState<boolean>(true);
+  const [difficulty, setDifficulty] = useState<string>("easy");
+  const [allQuestions, setAllQuestions] = useState<Question[]>([]);
+  const [shownQuestions, setShownQuestions] = useState<Set<number>>(new Set());
+  const [questionCount, setQuestionCount] = useState<number>(0);
 
-  useEffect(() => {
+  const loadQuestions = (difficulty: string) => {
     setLoading(true);
-    fetch("/assets/MCQ/questions.json")
+    fetch(`/assets/MCQ/${difficulty}.json`)
       .then((response) => response.json())
       .then((data: Question[]) => {
-        setQuestions(data.filter((q) => q.difficulty === difficulty));
+        setAllQuestions(data);
         setLoading(false);
       })
-      .catch(() => setLoading(false)); // handle potential errors
-  }, [difficulty]);
+      .catch(() => setLoading(false));
+  };
 
-  const handleAnswer = (selectedOption: string) => {
-    const currentQuestion = questions[currentQuestionIndex];
-    if (selectedOption === currentQuestion.correct_answer) {
-      setScore(score + 1);
-      setDifficulty("medium"); // Adjust difficulty based on performance
-    } else {
-      setDifficulty("easy");
+  useEffect(() => {
+    loadQuestions("easy");
+  }, []);
+
+  const getNextQuestion = (): Question | null => {
+    const availableQuestions = allQuestions.filter(
+      (_, index) => !shownQuestions.has(index)
+    );
+
+    if (availableQuestions.length === 0) {
+      return null;
     }
 
-    if (currentQuestionIndex < questions.length - 1) {
+    const nextQuestionIndex = Math.floor(
+      Math.random() * availableQuestions.length
+    );
+    const nextQuestion = availableQuestions[nextQuestionIndex];
+    setShownQuestions(
+      new Set([
+        ...Array.from(shownQuestions),
+        allQuestions.indexOf(nextQuestion),
+      ])
+    );
+
+    return nextQuestion;
+  };
+
+  useEffect(() => {
+    if (allQuestions.length > 0) {
+      const nextQuestion = getNextQuestion();
+      if (nextQuestion) {
+        setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
+      }
+    }
+  }, [allQuestions]);
+
+  const handleAnswer = (): void => {
+    if (selectedOption === null) return;
+
+    const currentQuestion = questions[currentQuestionIndex];
+    const isCorrect = selectedOption === currentQuestion.correct_answer;
+
+    if (isCorrect) {
+      setScore(score + 1);
+      if (difficulty === "easy") {
+        setDifficulty("medium");
+        loadQuestions("medium");
+      } else if (difficulty === "medium") {
+        setDifficulty("hard");
+        loadQuestions("hard");
+      }
+    } else {
+      if (difficulty === "medium") {
+        setDifficulty("easy");
+        loadQuestions("easy");
+      } else if (difficulty === "hard") {
+        setDifficulty("medium");
+        loadQuestions("medium");
+      }
+    }
+
+    setSelectedOption(null);
+
+    if (questionCount < 19) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
+      setQuestionCount(questionCount + 1);
     } else {
       setCompleted(true);
     }
   };
 
-  const generateSuggestions = (
-    score: number,
-    totalQuestions: number
-  ): string[] => {
-    const suggestions: string[] = [];
-    const percentage = (score / totalQuestions) * 100;
+  useEffect(() => {
+    if (completed) return;
 
-    if (percentage < 50) {
-      suggestions.push("Review basic arithmetic concepts.");
-    } else if (percentage < 70) {
-      suggestions.push("Practice more algebra questions.");
-    } else {
-      suggestions.push("Great job! Try more challenging problems.");
+    const nextQuestion = getNextQuestion();
+    if (nextQuestion) {
+      setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
     }
-
-    return suggestions;
-  };
+  }, [difficulty, questionCount, completed]);
 
   if (loading) {
     return (
@@ -70,33 +120,12 @@ const Quiz: React.FC = () => {
   }
 
   if (completed) {
-    const suggestions = generateSuggestions(score, questions.length);
     return (
       <div className="min-h-screen flex items-center justify-center bg-dark-1">
         <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
           <h2 className="text-2xl font-bold mb-4">Quiz Completed</h2>
-          <p className="text-xl mb-4">
-            Your score: {score} / {questions.length}
-          </p>
-          <h3 className="text-xl font-semibold mb-2">
-            Suggestions for Improvement:
-          </h3>
-          <ul className="list-disc list-inside">
-            {suggestions.map((suggestion, index) => (
-              <li key={index} className="mb-2">
-                {suggestion}
-              </li>
-            ))}
-          </ul>
+          <p className="text-xl mb-4">Your score: {score} / 20</p>
         </div>
-      </div>
-    );
-  }
-
-  if (questions.length === 0) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-dark-1">
-        No questions available.
       </div>
     );
   }
@@ -106,18 +135,34 @@ const Quiz: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark-1">
       <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
-        <h2 className="text-2xl font-bold mb-4">{currentQuestion.question}</h2>
-        <ul className="w-full">
-          {currentQuestion.options.map((option, index) => (
-            <li
-              key={index}
-              onClick={() => handleAnswer(option)}
-              className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded mb-2 cursor-pointer transition"
-            >
-              {option}
-            </li>
-          ))}
+        <h2 className="text-2xl font-bold mb-4">
+          {currentQuestion &&
+            `${currentQuestionIndex + 1}. ${currentQuestion.question}`}
+        </h2>
+        <ul className="w-full mb-4">
+          {currentQuestion &&
+            currentQuestion.options.map((option, index) => (
+              <li key={index} className="mb-2">
+                <label className="flex items-center">
+                  <input
+                    type="radio"
+                    name="option"
+                    value={option}
+                    checked={selectedOption === option}
+                    onChange={() => setSelectedOption(option)}
+                    className="form-radio text-primary-500"
+                  />
+                  <span className="ml-2 text-white">{option}</span>
+                </label>
+              </li>
+            ))}
         </ul>
+        <button
+          onClick={handleAnswer}
+          className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded transition"
+        >
+          Next
+        </button>
       </div>
     </div>
   );

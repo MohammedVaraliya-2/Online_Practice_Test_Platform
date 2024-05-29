@@ -6,7 +6,7 @@ import Dashboard from "./components/Dashboard";
 function App() {
   return (
     <>
-      <main className="min-h-screen flex items-center justify-center bg-dark-1">
+      <main className="min-h-screen bg-dark-1">
         <Routes>
           <Route index path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />

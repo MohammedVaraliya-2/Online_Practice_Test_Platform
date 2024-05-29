@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth0();
@@ -19,12 +20,13 @@ const Header: React.FC = () => {
           <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
             <ul className="py-1">
               <li>
-                <button
+                <Link
+                  to="/profile"
                   className="block px-4 py-2 text-gray-800 hover:bg-gray-200 w-full text-left"
-                  onClick={() => alert("View Profile")}
+                  onClick={() => setDropdownOpen(false)}
                 >
                   View your Profile
-                </button>
+                </Link>
               </li>
               <li>
                 <button

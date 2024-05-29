@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import "./globals.css";
 import Login from "./components/_auth/Login";
 import Dashboard from "./components/Dashboard";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route index path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </main>
     </>

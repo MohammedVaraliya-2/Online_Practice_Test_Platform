@@ -128,12 +128,12 @@ const Quiz: React.FC = () => {
 
   const handleAnswer = (): void => {
     if (selectedOption === null) return;
-    console.log(easyQuestions);
-    console.log(mediumQuestions);
-    console.log(hardQuestions);
-    console.log(questions);
+    // console.log(easyQuestions);
+    // console.log(mediumQuestions);
+    // console.log(hardQuestions);
+    // console.log(questions);
 
-    console.log("Question index Count", currentQuestionIndex);
+    // console.log("Question index Count", currentQuestionIndex);
 
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = selectedOption === currentQuestion.correct_answer;
@@ -155,7 +155,7 @@ const Quiz: React.FC = () => {
       if (nextQuestion) {
         setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        console.log("Next Question:", nextQuestion);
+        // console.log("Next Question:", nextQuestion);
       }
     }
 
@@ -174,7 +174,7 @@ const Quiz: React.FC = () => {
 
   if (completed) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-dark-1">
+      <div className="min-h-0 flex items-center justify-center bg-dark-1">
         <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
           <h2 className="text-2xl font-bold mb-4">Quiz Completed</h2>
           <p className="text-xl mb-4">Your score: {score} / 20</p>
@@ -186,7 +186,7 @@ const Quiz: React.FC = () => {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-dark-1">
+    <div className="min-h-0 flex items-center justify-center bg-dark-1">
       <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-4">
           {currentQuestion &&

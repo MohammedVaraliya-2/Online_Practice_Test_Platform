@@ -4,7 +4,7 @@ import Profile from "../Profile";
 import { useEffect } from "react";
 
 const Login = () => {
-  const { user, loginWithRedirect, isAuthenticated } = useAuth0();
+  const { loginWithRedirect, isAuthenticated } = useAuth0();
 
   const navigate = useNavigate();
 
@@ -13,8 +13,6 @@ const Login = () => {
       navigate("/dashboard");
     }
   }, [isAuthenticated, navigate]);
-
-  console.log("Current User", user);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-dark-1">

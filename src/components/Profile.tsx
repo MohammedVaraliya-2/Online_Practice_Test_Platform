@@ -1,10 +1,20 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const navigate = useNavigate();
+
+  if (!isAuthenticated) {
+    navigate("/");
+  }
 
   if (isLoading) {
-    return <div>Loading ...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-dark-1">
+        Loading...
+      </div>
+    );
   }
 
   return (

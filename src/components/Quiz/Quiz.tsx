@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import QuizCompleted from "./QuizCompleted";
 
 interface Question {
   question: string;
@@ -6,6 +7,8 @@ interface Question {
   correct_answer: string;
   difficulty: string;
   tags: string[];
+  userAnswer?: string | null;
+  userScore?: number | null;
 }
 
 const Quiz: React.FC = () => {
@@ -94,7 +97,11 @@ const Quiz: React.FC = () => {
       ])
     );
 
-    return nextQuestion;
+    return {
+      ...nextQuestion,
+      userAnswer: null,
+      userScore: null,
+    };
   };
 
   const getNextDifficulty = (
@@ -131,7 +138,6 @@ const Quiz: React.FC = () => {
     // console.log(easyQuestions);
     // console.log(mediumQuestions);
     // console.log(hardQuestions);
-    // console.log(questions);
 
     // console.log("Question index Count", currentQuestionIndex);
 
@@ -145,9 +151,23 @@ const Quiz: React.FC = () => {
     const newDifficulty = getNextDifficulty(isCorrect, difficulty);
     setDifficulty(newDifficulty);
 
+    const updatedQuestion = {
+      ...currentQuestion,
+      userAnswer: selectedOption,
+      userScore: isCorrect ? 1 : 0,
+    };
+
+    setQuestions((prevQuestions) => {
+      const updatedQuestions = [...prevQuestions];
+      updatedQuestions[currentQuestionIndex] = updatedQuestion;
+      return updatedQuestions;
+    });
+
+    console.log(questions);
+
     setSelectedOption(null);
-    console.log("Questions length:", questions.length);
-    console.log("Current Question Index:", currentQuestionIndex);
+    // console.log("Questions length:", questions.length);
+    // console.log("Current Question Index:", currentQuestionIndex);
 
     if (questions.length < 21) {
       setCompleted(false);
@@ -155,7 +175,7 @@ const Quiz: React.FC = () => {
       if (nextQuestion) {
         setQuestions((prevQuestions) => [...prevQuestions, nextQuestion]);
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        // console.log("Next Question:", nextQuestion);
+        console.log("Next Question:", nextQuestion);
       }
     }
 
@@ -173,38 +193,36 @@ const Quiz: React.FC = () => {
   }
 
   if (completed) {
-    return (
-      <div className="min-h-0 flex items-center justify-center bg-dark-1">
-        <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
-          <h2 className="text-2xl font-bold mb-4">Quiz Completed</h2>
-          <p className="text-xl mb-4">Your score: {score} / 20</p>
-        </div>
-      </div>
-    );
+    return <QuizCompleted questions={questions} score={score} />;
   }
 
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <div className="min-h-0 flex items-center justify-center bg-dark-1">
-      <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
+      <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-start w-465 h-auto">
         <h2 className="text-2xl font-bold mb-4">
           {currentQuestion &&
             `${currentQuestionIndex + 1}. ${currentQuestion.question} `}
         </h2>
-        <p
-          className={
-            currentQuestion?.difficulty === "easy"
-              ? "text-green-500"
-              : currentQuestion?.difficulty === "medium"
-              ? "text-yellow-500"
-              : currentQuestion?.difficulty === "hard"
-              ? "text-red"
-              : ""
-          }
-        >
-          {currentQuestion && `${currentQuestion.difficulty}`}
-        </p>
+        <div className="flex space-x-4 mb-4">
+          <p
+            className={
+              currentQuestion?.difficulty === "easy"
+                ? "text-green-500 bg-dark-4 rounded-md p-1.5"
+                : currentQuestion?.difficulty === "medium"
+                ? "text-yellow-500 bg-dark-4 rounded-md p-1.5"
+                : currentQuestion?.difficulty === "hard"
+                ? "text-red bg-dark-4 rounded-md p-1.5"
+                : ""
+            }
+          >
+            {currentQuestion && `${currentQuestion.difficulty}`}
+          </p>
+          <p className="bg-stone-600 rounded-md p-1.5">
+            {currentQuestion && `${currentQuestion.tags}`}
+          </p>
+        </div>
         <ul className="w-full mb-4">
           {currentQuestion &&
             currentQuestion.options.map((option, index) => (
@@ -223,12 +241,14 @@ const Quiz: React.FC = () => {
               </li>
             ))}
         </ul>
-        <button
-          onClick={handleAnswer}
-          className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded transition"
-        >
-          Next
-        </button>
+        <div className="flex justify-end w-full">
+          <button
+            onClick={handleAnswer}
+            className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded transition"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

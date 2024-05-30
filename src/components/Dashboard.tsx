@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
-import Quiz from "./Quiz";
+import Quiz from "./Quiz/Quiz";
 
 const Dashboard: React.FC = () => {
   const { isAuthenticated } = useAuth0();

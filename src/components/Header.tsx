@@ -30,7 +30,9 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-dark-2 p-4 flex justify-between items-center shadow-lg">
-      <h1 className="text-xl font-bold text-white">User Dashboard</h1>
+      <h1 className="text-xl font-bold text-white">
+        <Link to="/dashboard">User Dashboard</Link>
+      </h1>
       <div className="relative" ref={dropdownRef}>
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}

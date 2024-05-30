@@ -5,7 +5,9 @@
     "options": ["cos(x)", "-cos(x)", "sin(x)", "-sin(x)"],
     "correct_answer": "cos(x)",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The derivative of sin(x) is cos(x), which can be derived using the chain rule of differentiation.",
+    "references": ["https://www.mathsisfun.com/calculus/derivatives-rules.html"]
   },
   {
     "id": 2,
@@ -13,7 +15,11 @@
     "options": ["0", "2", "4", "6"],
     "correct_answer": "2",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "The given equation is a perfect square trinomial, which can be factored as (x - 2)^2 = 0. So, the solution is x = 2.",
+    "references": [
+      "https://www.mathplanet.com/algebra/quadratic-equations/solving-quadratic-equations/the-discriminant"
+    ]
   },
   {
     "id": 3,
@@ -21,7 +27,9 @@
     "options": ["x", "ln(x)", "1/x", "e^x"],
     "correct_answer": "ln(x)",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The integral of 1/x with respect to x is ln(x) + C, where C is the constant of integration.",
+    "references": ["https://www.mathsisfun.com/calculus/integration-rules.html"]
   },
   {
     "id": 4,
@@ -29,7 +37,9 @@
     "options": ["1/2", "√2/2", "√3/2", "1"],
     "correct_answer": "√2/2",
     "difficulty": "hard",
-    "tags": ["trigonometry"]
+    "tags": ["trigonometry"],
+    "explanation": "The sine of 45 degrees is equal to the square root of 2 divided by 2.",
+    "references": ["https://www.mathsisfun.com/sine-cosine-tangent.html"]
   },
   {
     "id": 5,
@@ -37,7 +47,9 @@
     "options": ["129", "130", "131", "132"],
     "correct_answer": "129",
     "difficulty": "hard",
-    "tags": ["number theory"]
+    "tags": ["number theory"],
+    "explanation": "The sum of the first 10 prime numbers is 129.",
+    "references": ["https://primes.utm.edu/lists/small/1000.txt"]
   },
   {
     "id": 6,
@@ -45,7 +57,11 @@
     "options": ["3x^2 - 6x + 2", "3x^2 - 6x", "x^2 - 2x + 2", "3x - 2"],
     "correct_answer": "3x^2 - 6x + 2",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The derivative of f(x) with respect to x is f'(x) = 3x^2 - 6x + 2.",
+    "references": [
+      "https://tutorial.math.lamar.edu/classes/calcI/defnofderivative.aspx"
+    ]
   },
   {
     "id": 7,
@@ -53,7 +69,9 @@
     "options": ["2", "3", "4", "5"],
     "correct_answer": "4",
     "difficulty": "hard",
-    "tags": ["number theory"]
+    "tags": ["number theory"],
+    "explanation": "log(10000) to base 10 equals 4 because 10^4 = 10000.",
+    "references": ["https://www.mathsisfun.com/algebra/logarithms.html"]
   },
   {
     "id": 8,
@@ -61,7 +79,11 @@
     "options": ["(2, 3)", "(3, 1)", "(2, 5)", "(4, 2)"],
     "correct_answer": "(2, 3)",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "Solving the system of equations yields the solution (x, y) = (2, 3).",
+    "references": [
+      "https://www.mathsisfun.com/algebra/systems-linear-equations.html"
+    ]
   },
   {
     "id": 9,
@@ -69,7 +91,11 @@
     "options": ["-4", "-2", "0", "2"],
     "correct_answer": "-4",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "Substituting the given values into the vertex form of a parabola equation, we can solve for b.",
+    "references": [
+      "https://www.mathsisfun.com/algebra/parabola-vertex-form.html"
+    ]
   },
   {
     "id": 10,
@@ -77,7 +103,9 @@
     "options": ["0", "1", "∞", "-1"],
     "correct_answer": "1",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "This is a fundamental limit in calculus known as the Squeeze Theorem or the definition of the derivative of sin(x) at x = 0.",
+    "references": ["https://en.wikipedia.org/wiki/Squeeze_theorem"]
   },
   {
     "id": 11,
@@ -85,7 +113,9 @@
     "options": ["√3/3", "1", "√3", "2"],
     "correct_answer": "√3",
     "difficulty": "hard",
-    "tags": ["trigonometry"]
+    "tags": ["trigonometry"],
+    "explanation": "The tangent of 60 degrees is equal to the square root of 3.",
+    "references": ["https://www.mathsisfun.com/sine-cosine-tangent.html"]
   },
   {
     "id": 12,
@@ -93,7 +123,11 @@
     "options": ["1", "2", "3", "4"],
     "correct_answer": "1",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "We can solve this system of equations by substitution or elimination to find the value of y.",
+    "references": [
+      "https://www.mathplanet.com/algebra/systems-of-linear-equations/systems-of-linear-equations-a-review"
+    ]
   },
   {
     "id": 13,
@@ -101,7 +135,9 @@
     "options": ["ln(5)", "5ln(x)", "xln(5)", "ln(e)"],
     "correct_answer": "ln(5)",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The solution to the equation e^x = 5 is x = ln(5), which can be found using the natural logarithm function.",
+    "references": ["https://www.mathsisfun.com/algebra/logarithms.html"]
   },
   {
     "id": 14,
@@ -109,7 +145,9 @@
     "options": ["5", "6", "7", "8"],
     "correct_answer": "5",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "The determinant of a 2x2 matrix [[a, b], [c, d]] is ad - bc. So, for this matrix, the determinant is (2*4) - (3*1) = 5.",
+    "references": ["https://www.mathsisfun.com/algebra/matrix-determinant.html"]
   },
   {
     "id": 15,
@@ -117,7 +155,9 @@
     "options": ["1", "2", "3", "4"],
     "correct_answer": "2",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The sum of an infinite geometric series with first term a and common ratio r, where |r| < 1, is given by a / (1 - r). In this series, a = 1 and r = 1/2.",
+    "references": ["https://en.wikipedia.org/wiki/Geometric_series#Sum"]
   },
   {
     "id": 16,
@@ -125,7 +165,9 @@
     "options": ["1", "2", "3", "4"],
     "correct_answer": "3",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "The eigenvalues of a 2x2 matrix can be found by solving the characteristic equation. For this matrix, the eigenvalues are 1 and 3.",
+    "references": ["https://en.wikipedia.org/wiki/Eigenvalues_and_eigenvectors"]
   },
   {
     "id": 17,
@@ -133,7 +175,9 @@
     "options": ["1/s", "s", "1/s^2", "s^2"],
     "correct_answer": "1/s",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The Laplace transform of a constant function 1 is 1/s, where s is the complex frequency variable.",
+    "references": ["https://en.wikipedia.org/wiki/Laplace_transform"]
   },
   {
     "id": 18,
@@ -141,7 +185,11 @@
     "options": ["4", "5", "6", "7"],
     "correct_answer": "6",
     "difficulty": "hard",
-    "tags": ["algebra"]
+    "tags": ["algebra"],
+    "explanation": "To solve this logarithmic equation, we first rewrite it in exponential form, then solve for x.",
+    "references": [
+      "https://www.mathplanet.com/algebra/logarithms-and-exponential-functions/solving-logarithmic-equations"
+    ]
   },
   {
     "id": 19,
@@ -149,7 +197,9 @@
     "options": ["e", "1", "0", "∞"],
     "correct_answer": "∞",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The radius of convergence of a power series can be determined using the Ratio Test or the Root Test.",
+    "references": ["https://en.wikipedia.org/wiki/Radius_of_convergence"]
   },
   {
     "id": 20,
@@ -157,7 +207,11 @@
     "options": ["1", "2", "1/2", "1/4"],
     "correct_answer": "1",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "The double integral of (x + y) over the given region R represents the volume under the surface z = x + y and above the region R in the xy-plane.",
+    "references": [
+      "https://tutorial.math.lamar.edu/classes/calciii/doubleintegralsintro.aspx"
+    ]
   },
   {
     "id": 21,
@@ -165,6 +219,10 @@
     "options": ["0", "1", "2", "3"],
     "correct_answer": "1",
     "difficulty": "hard",
-    "tags": ["calculus"]
+    "tags": ["calculus"],
+    "explanation": "To find the slope of the tangent line, we first find the derivative of the function and then evaluate it at the given point.",
+    "references": [
+      "https://www.mathsisfun.com/calculus/derivatives-introduction.html"
+    ]
   }
 ]

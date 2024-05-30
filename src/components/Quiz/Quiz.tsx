@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import QuizCompleted from "./QuizCompleted";
+import QuestionOptions from "./QuestionOptions";
 
 interface Question {
   question: string;
@@ -186,7 +187,7 @@ const Quiz: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-dark-1">
+      <div className="min-h-0 flex items-center justify-center bg-dark-1">
         Loading...
       </div>
     );
@@ -205,42 +206,29 @@ const Quiz: React.FC = () => {
           {currentQuestion &&
             `${currentQuestionIndex + 1}. ${currentQuestion.question} `}
         </h2>
-        <div className="flex space-x-4 mb-4">
+        <div className="flex space-x-4 mb-4 ml-6">
           <p
             className={
               currentQuestion?.difficulty === "easy"
-                ? "text-green-500 bg-dark-4 rounded-md p-1.5"
+                ? "text-green-500 bg-dark-4 rounded-full p-2 pl-4 pr-4"
                 : currentQuestion?.difficulty === "medium"
-                ? "text-yellow-500 bg-dark-4 rounded-md p-1.5"
+                ? "text-yellow-500 bg-dark-4 rounded-full p-2 pl-4 pr-4"
                 : currentQuestion?.difficulty === "hard"
-                ? "text-red bg-dark-4 rounded-md p-1.5"
+                ? "text-red bg-dark-4 rounded-full p-2 pl-4 pr-4"
                 : ""
             }
           >
             {currentQuestion && `${currentQuestion.difficulty}`}
           </p>
-          <p className="bg-stone-600 rounded-md p-1.5">
+          <p className="bg-neutral-600 rounded-full p-2 pl-4 pr-4">
             {currentQuestion && `${currentQuestion.tags}`}
           </p>
         </div>
-        <ul className="w-full mb-4">
-          {currentQuestion &&
-            currentQuestion.options.map((option, index) => (
-              <li key={index} className="mb-2">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name="option"
-                    value={option}
-                    checked={selectedOption === option}
-                    onChange={() => setSelectedOption(option)}
-                    className="form-radio text-primary-500"
-                  />
-                  <span className="ml-2 text-white">{option}</span>
-                </label>
-              </li>
-            ))}
-        </ul>
+        <QuestionOptions
+          options={currentQuestion?.options ?? []}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
         <div className="flex justify-end w-full">
           <button
             onClick={handleAnswer}

@@ -1,14 +1,17 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { useEffect } from "react";
 
 const Profile = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
   const navigate = useNavigate();
 
-  if (!isAuthenticated) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   if (isLoading) {
     return (

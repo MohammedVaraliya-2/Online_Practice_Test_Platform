@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import QuizCompleted from "./QuizCompleted";
 import QuestionOptions from "./QuestionOptions";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from "react-router-dom";
 
 interface Question {
   question: string;
@@ -27,6 +29,14 @@ const Quiz: React.FC = () => {
   const [mediumQuestions, setMediumQuestions] = useState<Question[]>([]);
   const [hardQuestions, setHardQuestions] = useState<Question[]>([]);
   const [shownQuestions, setShownQuestions] = useState<Set<number>>(new Set());
+  const { isAuthenticated } = useAuth0();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate("/");
+    }
+  }, [isAuthenticated, navigate]);
 
   // Function to preload all questions from each difficulty level
   const preloadQuestions = async () => {

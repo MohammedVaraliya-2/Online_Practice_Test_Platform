@@ -30,7 +30,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-dark-2 p-4 flex justify-between items-center shadow-lg">
-      <h1 className="text-xl font-bold text-white">
+      <h1 className="text-lg sm:text-xl md:text-2xl font-bold text-white">
         <Link to="/dashboard">User Dashboard</Link>
       </h1>
       <div className="relative" ref={dropdownRef}>
@@ -41,7 +41,7 @@ const Header: React.FC = () => {
           {user?.nickname}
         </button>
         {dropdownOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg">
+          <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
             <ul className="py-1">
               <li>
                 <Link

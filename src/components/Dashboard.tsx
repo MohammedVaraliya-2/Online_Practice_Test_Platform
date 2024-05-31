@@ -22,13 +22,13 @@ const Dashboard: React.FC = () => {
         {startQuiz ? (
           <Quiz />
         ) : (
-          <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
-            <h1 className="text-3xl font-bold mb-6 text-white">
+          <div className="bg-dark-2 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 rounded-lg shadow-lg flex flex-col items-center w-full max-w-md">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 text-white text-center">
               Welcome to the Quiz!
             </h1>
             <button
               onClick={() => setStartQuiz(true)}
-              className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded transition"
+              className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 lg:py-4 lg:px-8 rounded transition w-full sm:w-auto"
             >
               Start Quiz
             </button>

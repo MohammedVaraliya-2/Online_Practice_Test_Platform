@@ -24,7 +24,7 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
   correctAnswerCount,
 }) => {
   return (
-    <div className="min-h-0 flex items-center justify-center bg-dark-1 w-1/2">
+    <div className="min-h-0 flex items-center justify-center bg-dark-1 md:w-1/2">
       <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-4">Quiz Completed</h2>
         <p className="text-xl mb-4">Your score: {score}</p>

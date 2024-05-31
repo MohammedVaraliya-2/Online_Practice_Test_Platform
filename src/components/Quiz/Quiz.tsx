@@ -233,8 +233,8 @@ const Quiz: React.FC = () => {
 
   return (
     <div className="min-h-0 flex items-center justify-center bg-dark-1">
-      <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-start w-465 h-auto">
-        <h2 className="text-2xl font-bold mb-4">
+      <div className="bg-dark-2 md:p-6 p-10 rounded-lg shadow-lg flex flex-col items-start md:w-465 max-w-2xl sm:w-auto h-auto">
+        <h2 className="text-xl md:text-2xl font-bold mb-4 text-white">
           {currentQuestion &&
             `${currentQuestionIndex + 1}. ${currentQuestion.question} `}
         </h2>

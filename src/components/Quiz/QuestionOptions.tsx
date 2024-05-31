@@ -12,7 +12,7 @@ const QuestionOptions: React.FC<QuestionOptionsProps> = ({
   setSelectedOption,
 }) => {
   return (
-    <ul className="w-64 text-sm font-medium text-gray-900 bg-slate-800 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white  ml-6 mb-4">
+    <ul className="w-4/5 text-sm font-medium text-gray-900 bg-slate-800 border border-gray-200 rounded-lg dark:bg-gray-700 dark:border-gray-600 dark:text-white ml-6 mb-4">
       {options.map((option, index) => (
         <li
           key={index}
@@ -28,7 +28,7 @@ const QuestionOptions: React.FC<QuestionOptionsProps> = ({
               value={option}
               checked={selectedOption === option}
               onChange={() => setSelectedOption(option)}
-              className="w-5 h-5 bg-gray-100 border-gray-300 focus:ring-cyan-300"
+              className="w-5 h-5 bg-gray-100 border-gray-300 focus:ring-cyan-950"
             />
             <label
               htmlFor={option}

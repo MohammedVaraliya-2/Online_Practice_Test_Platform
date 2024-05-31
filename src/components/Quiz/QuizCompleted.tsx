@@ -1,22 +1,5 @@
 import React from "react";
-
-interface Question {
-  question: string;
-  options: string[];
-  correct_answer: string;
-  difficulty: string;
-  tags: string[];
-  explanation: string;
-  references: string;
-  userAnswer?: string | null;
-  userScore?: number | null;
-}
-
-interface QuizCompletedProps {
-  questions: Question[];
-  score: number;
-  correctAnswerCount: number;
-}
+import { QuizCompletedProps } from "../../types";
 
 const QuizCompleted: React.FC<QuizCompletedProps> = ({
   questions,

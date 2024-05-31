@@ -1,10 +1,5 @@
 import React from "react";
-
-interface QuestionOptionsProps {
-  options: string[];
-  selectedOption: string | null;
-  setSelectedOption: (option: string) => void;
-}
+import { QuestionOptionsProps } from "../../types";
 
 const QuestionOptions: React.FC<QuestionOptionsProps> = ({
   options,

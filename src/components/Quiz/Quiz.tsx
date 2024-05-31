@@ -3,18 +3,7 @@ import QuizCompleted from "./QuizCompleted";
 import QuestionOptions from "./QuestionOptions";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
-
-interface Question {
-  question: string;
-  options: string[];
-  correct_answer: string;
-  difficulty: string;
-  tags: string[];
-  explanation: string;
-  references: string;
-  userAnswer?: string | null;
-  userScore?: number | null;
-}
+import { Question } from "../../types";
 
 const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState<Question[]>([]);

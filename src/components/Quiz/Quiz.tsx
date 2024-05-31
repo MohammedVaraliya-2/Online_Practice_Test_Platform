@@ -8,6 +8,8 @@ interface Question {
   correct_answer: string;
   difficulty: string;
   tags: string[];
+  explanation: string;
+  references: string;
   userAnswer?: string | null;
   userScore?: number | null;
 }
@@ -17,6 +19,7 @@ const Quiz: React.FC = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [score, setScore] = useState<number>(0);
+  const [correctAnswerCount, setCorrectAnswerCount] = useState<number>(0);
   const [completed, setCompleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [difficulty, setDifficulty] = useState<string>("easy");
@@ -145,8 +148,21 @@ const Quiz: React.FC = () => {
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = selectedOption === currentQuestion.correct_answer;
 
-    if (isCorrect) {
-      setScore((prevScore) => prevScore + 1);
+    if (isCorrect && currentQuestion.difficulty === "easy") {
+      setScore((prevScore) => prevScore + 2);
+      setCorrectAnswerCount(
+        (prevCorrectAnswerCount) => prevCorrectAnswerCount + 1
+      );
+    } else if (isCorrect && currentQuestion.difficulty === "medium") {
+      setScore((prevScore) => prevScore + 3);
+      setCorrectAnswerCount(
+        (prevCorrectAnswerCount) => prevCorrectAnswerCount + 1
+      );
+    } else if (isCorrect && currentQuestion.difficulty === "hard") {
+      setScore((prevScore) => prevScore + 4);
+      setCorrectAnswerCount(
+        (prevCorrectAnswerCount) => prevCorrectAnswerCount + 1
+      );
     }
 
     const newDifficulty = getNextDifficulty(isCorrect, difficulty);
@@ -170,7 +186,7 @@ const Quiz: React.FC = () => {
     // console.log("Questions length:", questions.length);
     // console.log("Current Question Index:", currentQuestionIndex);
 
-    if (questions.length < 21) {
+    if (questions.length < 20) {
       setCompleted(false);
       const nextQuestion = getNextQuestion(newDifficulty);
       if (nextQuestion) {
@@ -194,7 +210,13 @@ const Quiz: React.FC = () => {
   }
 
   if (completed) {
-    return <QuizCompleted questions={questions} score={score} />;
+    return (
+      <QuizCompleted
+        questions={questions}
+        score={score}
+        correctAnswerCount={correctAnswerCount}
+      />
+    );
   }
 
   const currentQuestion = questions[currentQuestionIndex];

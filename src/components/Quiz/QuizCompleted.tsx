@@ -6,6 +6,8 @@ interface Question {
   correct_answer: string;
   difficulty: string;
   tags: string[];
+  explanation: string;
+  references: string;
   userAnswer?: string | null;
   userScore?: number | null;
 }
@@ -13,14 +15,22 @@ interface Question {
 interface QuizCompletedProps {
   questions: Question[];
   score: number;
+  correctAnswerCount: number;
 }
 
-const QuizCompleted: React.FC<QuizCompletedProps> = ({ questions, score }) => {
+const QuizCompleted: React.FC<QuizCompletedProps> = ({
+  questions,
+  score,
+  correctAnswerCount,
+}) => {
   return (
-    <div className="min-h-0 flex items-center justify-center bg-dark-1">
+    <div className="min-h-0 flex items-center justify-center bg-dark-1 w-1/2">
       <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
         <h2 className="text-2xl font-bold mb-4">Quiz Completed</h2>
-        <p className="text-xl mb-4">Your score: {score} / 20</p>
+        <p className="text-xl mb-4">Your score: {score}</p>
+        <p className="text-xl mb-4">
+          Correct Answers: {correctAnswerCount} / 20
+        </p>
         <ul className="w-full">
           {questions.map((question, index) => (
             <li key={index} className="mb-4">
@@ -42,6 +52,24 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({ questions, score }) => {
                   </span>
                   <span className="text-white">{question.correct_answer}</span>
                 </p>
+                <p className="text-sm">
+                  <span className="font-bold text-zinc-400 underline">
+                    Explaination:
+                  </span>
+                  <span className="text-neutral-400">
+                    {" "}
+                    {question.explanation}
+                  </span>
+                </p>
+                <div className="text-sm">
+                  <a
+                    href={question.references}
+                    className="font-bold text-blue-300 underline"
+                    target="_blank"
+                  >
+                    This Additional reference might help
+                  </a>
+                </div>
               </div>
             </li>
           ))}

@@ -1,11 +1,39 @@
 import React from "react";
 import { QuizCompletedProps } from "../../types";
+import ResultEvaluationWithPiChart from "./ResultEvaluationWithPiChart";
 
 const QuizCompleted: React.FC<QuizCompletedProps> = ({
   questions,
   score,
   correctAnswerCount,
 }) => {
+  const processQuizData = () => {
+    const tagCounts: { [key: string]: { correct: number; total: number } } = {};
+
+    questions.forEach((question) => {
+      const { tags, userAnswer, correct_answer } = question;
+      tags.forEach((tag) => {
+        if (!tagCounts[tag]) {
+          tagCounts[tag] = { correct: 0, total: 0 };
+        }
+        tagCounts[tag].total += 1;
+        if (userAnswer === correct_answer) {
+          tagCounts[tag].correct += 1;
+        }
+      });
+    });
+
+    const data = Object.keys(tagCounts).map((tag, index) => ({
+      id: index,
+      value: tagCounts[tag].correct,
+      label: `${tag} ${tagCounts[tag].correct}/${tagCounts[tag].total}`,
+    }));
+
+    return data;
+  };
+
+  const pieChartData = processQuizData();
+
   return (
     <div className="min-h-0 flex items-center justify-center bg-dark-1 md:w-1/2">
       <div className="bg-dark-2 p-10 rounded-lg shadow-lg flex flex-col items-center">
@@ -14,6 +42,7 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
         <p className="text-xl mb-4">
           Correct Answers: {correctAnswerCount} / 20
         </p>
+        <ResultEvaluationWithPiChart data={pieChartData} />
         <ul className="w-full">
           {questions.map((question, index) => (
             <li key={index} className="mb-4">

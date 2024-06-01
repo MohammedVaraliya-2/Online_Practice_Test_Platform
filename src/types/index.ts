@@ -21,3 +21,7 @@ export type QuestionOptionsProps = {
   selectedOption: string | null;
   setSelectedOption: (option: string) => void;
 }
+
+export type ResultEvaluationWithPiChartProps = {
+  data: { id: number; value: number; label: string }[];
+}

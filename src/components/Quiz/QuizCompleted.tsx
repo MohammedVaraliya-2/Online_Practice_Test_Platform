@@ -45,7 +45,14 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
         <ResultEvaluationWithPiChart data={pieChartData} />
         <ul className="w-full">
           {questions.map((question, index) => (
-            <li key={index} className="mb-4">
+            <li
+              key={index}
+              className={`mb-4 p-4 ${
+                question.userAnswer === question.correct_answer
+                  ? "border-2 border-green-500 rounded-2xl"
+                  : ""
+              }`}
+            >
               <div className="mb-2">
                 <h3 className="text-lg font-semibold text-white">
                   {index + 1}. {question.question}
@@ -73,15 +80,18 @@ const QuizCompleted: React.FC<QuizCompletedProps> = ({
                     {question.explanation}
                   </span>
                 </p>
-                <div className="text-sm">
-                  <a
-                    href={question.references}
-                    className="font-bold text-blue-300 underline"
-                    target="_blank"
-                  >
-                    This Additional reference might help
-                  </a>
-                </div>
+                {question.userAnswer !== question.correct_answer && (
+                  <div className="text-sm">
+                    <a
+                      href={question.references}
+                      className="font-bold text-blue-300 underline"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      This Additional reference might help
+                    </a>
+                  </div>
+                )}
               </div>
             </li>
           ))}
